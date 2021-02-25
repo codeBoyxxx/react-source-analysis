@@ -11,7 +11,7 @@ import ReactDOM from './react-dom';
 // },'hello','world')
 // console.log('vdom',element);
 
-let element = <div className='title' style={{background:'red'}}>hello world</div>
+let element = <div className='title' style={{background:'red',fontSize:'100px'}}>hello world</div>
 console.log('element元素',element)
 
 ReactDOM.render(

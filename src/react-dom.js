@@ -49,7 +49,24 @@ function createDOM(vdom) {
  * @param {*} newProps 
  */
 function updateProps(dom,oldProps ={} ,newProps ={}) {
-    
+    for(let key in newProps){
+        if(key === 'children') {continue}
+        if(key === 'style'){ // 更新样式
+            let style = newProps[key]
+            for(let attr in style){
+                dom.style[attr] = style[attr]
+            }
+        }else{
+            dom[key] = newProps[key]
+        }
+    }
+    if(oldProps){
+        for(let key in oldProps){
+            if(!newProps.hasOwnProperty(key)){
+                dom[key] = ''
+            }
+        }
+    }
 }
 
 function reconciileChildren(childrenVdom,parentDOM) {
