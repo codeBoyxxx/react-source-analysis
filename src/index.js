@@ -2,17 +2,13 @@ import React from './react';
 import ReactDOM from './react-dom';
 
 
-// function App(params) {
-//   return <div>hello world</div>
-// }
+function App(props) {
+  return <div>{props.name} {props.children}</div>
+}
 
-// let element = React.createElement('h1',{
-//   id:'title'
-// },'hello','world')
-// console.log('vdom',element);
 
-let element = <div className='title' style={{background:'red',fontSize:'100px'}}>hello world</div>
-console.log('element元素',element)
+let element = <App name='hello'>meng</App>
+console.log(element,element)
 
 ReactDOM.render(
   element,

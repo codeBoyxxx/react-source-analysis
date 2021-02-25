@@ -24,6 +24,8 @@ function createDOM(vdom) {
     let dom;
     if(type===REACT_TEXT){
         dom = document.createTextNode(props.content)
+    }else if(typeof type === 'function'){
+        return mountFunctionComponent(vdom)
     }else{
         dom=document.createElement(type);
     }
@@ -40,6 +42,13 @@ function createDOM(vdom) {
 
     return dom;
     
+}
+
+function mountFunctionComponent(vdom) {
+    const { type, props } = vdom
+    const renderVdom = type(props)
+    vdom.oldRenderVdom = renderVdom
+    return createDOM(renderVdom)
 }
 
 /**
